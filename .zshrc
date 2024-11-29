@@ -18,8 +18,6 @@ antigen bundle vi-mode
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle zsh-users/zsh-completions
 
 # Load the theme.
@@ -36,3 +34,14 @@ bindkey -v
 
 alias vim="nvim"
 alias vi="nvim"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+
+export VI_MODE_SET_CURSOR=true
+
+alias update="sudo apt update && sudo apt upgrade -y"
+alias zshrc="vim ~/.zshrc"
