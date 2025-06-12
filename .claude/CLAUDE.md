@@ -6,10 +6,12 @@
 - Always use clippy for rust
 - Always prefer uv over pip
 - Always use ruff for python
+- Always use rg over grep
+- Always use fd over find
 
 # Telegram Notifications
 
-Use the mcp__telegram-notify__send_telegram_message tool to send notifications to Telegram.
+Use the mcp__telegram-notify__send_telegram_message and mcp__discord-notify__send_discord_message tools to send notifications to Telegram and Discord at the same time when they are available.
 
 - Always send a Telegram notification when:
   - A task is fully complete
