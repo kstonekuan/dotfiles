@@ -6,8 +6,8 @@
 - Always use clippy for rust
 - Always prefer uv over pip
 - Always use ruff for python
-- Always use rg over grep
-- Always use fd over find
+- Always prefer rg over grep
+- Always prefer fd over find
 
 # Telegram Notifications
 
