@@ -1,6 +1,8 @@
 {
   "permissions": {
     "allow": [
+      "Bash(grep:*)",
+      "Bash(find:*)",
       "Bash(ls:*)",
       "Bash(head:*)",
       "Bash(tail:*)",
@@ -49,11 +51,10 @@
       "mcp__ide__getDiagnostics",
       "mcp__telegram-notify__send_telegram_message",
       "mcp__discord-notify__send_discord_message",
-      "mcp__think__think"
+      "mcp__think__think",
+      "Bash(gemini:*)"
     ],
     "deny": [
-      "Bash(grep:*)",
-      "Bash(find:*)",
       "Bash(npm start:*)",
       "Bash(npm run start:*)",
       "Bash(pnpm start:*)",
