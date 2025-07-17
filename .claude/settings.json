@@ -16,15 +16,14 @@
       "Bash(npm search:*)",
       "Bash(pnpm install:*)",
       "Bash(pnpm list:*)",
-      "Bash(pnpm create:*)",
-      "Bash(pnpm add:*)",
       "Bash(pnpm outdated:*)",
-      "Bash(pnpm biome:*)",
       "Bash(npx tsc:*)",
-      "Bash(npx biome:*)",
+      "Bash(npx biome check:*)",
+      "Bash(npx biome format:*)",
       "Bash(npm run build:*)",
       "Bash(pnpm build:*)",
       "Bash(pnpm run build:*)",
+      "Bash(npx biome lint:*)",
       "Bash(npm run lint:*)",
       "Bash(pnpm lint:*)",
       "Bash(pnpm run lint:*)",
@@ -32,12 +31,13 @@
       "Bash(pnpm run typecheck:*)",
       "Bash(pnpm type-check:*)",
       "Bash(pnpm run type-check:*)",
-      "Bash(pnpm check:*)",
-      "Bash(pnpm run check:*)",
       "Bash(pnpm format:*)",
       "Bash(pnpm run format:*)",
       "Bash(pnpm init:*)",
       "Bash(npm run typecheck:*)",
+      "Bash(pnpm test:*)",
+      "Bash(pnpm run test:*)",
+      "Bash(pnpm knip:*)",
       "Bash(tsc --noEmit)",
       "Bash(cargo init:*)",
       "Bash(cargo check:*)",
@@ -45,9 +45,13 @@
       "Bash(cargo clippy:*)",
       "Bash(cargo build:*)",
       "WebFetch(domain:github.com)",
+      "WebFetch(domain:api.github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:developers.cloudflare.com)",
       "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:www.npmjs.com)",
+      "WebFetch(domain:ai.google.dev)",
+      "WebFetch(domain:developer.chrome.com)",
       "mcp__ide__getDiagnostics",
       "mcp__telegram-notify__send_telegram_message",
       "mcp__discord-notify__send_discord_message",
@@ -58,13 +62,19 @@
       "Bash(npm start:*)",
       "Bash(npm run start:*)",
       "Bash(pnpm start:*)",
-      "Bash(pnpm run start:*)",
       "Bash(npm dev:*)",
       "Bash(npm run dev:*)",
-      "Bash(pnpm dev:*)",
-      "Bash(pnpm run dev:*)"
+      "Bash(pnpm dev:*)"
+    ],
+    "additionalDirectories": [
+      "/tmp"
     ]
   },
-  "enableAllProjectMcpServers": false,
-  "model": "opus"
+  "model": "opus",
+  "env": {
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
+    "DISABLE_TELEMETRY": "1",
+    "DISABLE_ERROR_REPORTING": "1",
+    "DISABLE_NON_ESSENTIAL_MODEL_CALLS": "1"
+  }
 }
