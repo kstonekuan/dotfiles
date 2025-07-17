@@ -42,6 +42,18 @@ export NVM_DIR="$HOME/.nvm"
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 export VI_MODE_SET_CURSOR=true
+export SAM_CLI_TELEMETRY=0
 
 alias update="sudo apt update && sudo apt upgrade -y"
 alias zshrc="vim ~/.zshrc"
+
+
+. "$HOME/.local/bin/env"
+
+# pnpm
+export PNPM_HOME="/home/kingston/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
