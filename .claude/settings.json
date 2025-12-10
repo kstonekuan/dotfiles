@@ -1,9 +1,17 @@
 {
+  "env": {
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
+    "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1",
+    "DISABLE_TELEMETRY": "1",
+    "DISABLE_ERROR_REPORTING": "1",
+    "DISABLE_NON_ESSENTIAL_MODEL_CALLS": "1"
+  },
   "permissions": {
     "allow": [
       "Bash(grep:*)",
       "Bash(find:*)",
       "Bash(ls:*)",
+      "Bash(lsof:*)",
       "Bash(head:*)",
       "Bash(tail:*)",
       "Bash(fd:*)",
@@ -15,6 +23,9 @@
       "Bash(npm install:*)",
       "Bash(npm search:*)",
       "Bash(pnpm install:*)",
+      "Bash(pnpm create:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm remove:*)",
       "Bash(pnpm list:*)",
       "Bash(pnpm outdated:*)",
       "Bash(npx tsc:*)",
@@ -29,6 +40,8 @@
       "Bash(pnpm run lint:*)",
       "Bash(pnpm typecheck:*)",
       "Bash(pnpm run typecheck:*)",
+      "Bash(pnpm check:*)",
+      "Bash(pnpm run check:*)",
       "Bash(pnpm type-check:*)",
       "Bash(pnpm run type-check:*)",
       "Bash(pnpm format:*)",
@@ -43,7 +56,18 @@
       "Bash(cargo check:*)",
       "Bash(cargo update:*)",
       "Bash(cargo clippy:*)",
-      "Bash(cargo build:*)",
+      "Bash(cargo fmt:*)",
+      "Bash(git fetch:*)",
+      "Bash(uv lock:*)",
+      "Bash(uv sync:*)",
+      "Bash(ruff:*)",
+      "Bash(ty:*)",
+      "Bash(uv run ruff:*)",
+      "Bash(uv run ty:*)",
+      "Bash(uvx ruff:*)",
+      "Bash(uvx ty:*)",
+      "Bash(tree:*)",
+      "Bash(test:*)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:api.github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
@@ -54,11 +78,14 @@
       "WebFetch(domain:developer.chrome.com)",
       "mcp__ide__getDiagnostics",
       "mcp__telegram-notify__send_telegram_message",
-      "mcp__discord-notify__send_discord_message",
-      "mcp__think__think",
-      "Bash(gemini:*)"
+      "Bash(gemini:*)",
+      "Skill(frontend-design:frontend-design)"
     ],
     "deny": [
+      "Bash(python3:*)",
+      "Bash(mypy:*)",
+      "Bash(pyright:*)",
+      "Bash(cargo run:*)",
       "Bash(npm start:*)",
       "Bash(npm run start:*)",
       "Bash(pnpm start:*)",
@@ -70,11 +97,15 @@
       "/tmp"
     ]
   },
-  "model": "opus",
-  "env": {
-    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
-    "DISABLE_TELEMETRY": "1",
-    "DISABLE_ERROR_REPORTING": "1",
-    "DISABLE_NON_ESSENTIAL_MODEL_CALLS": "1"
+  "statusLine": {
+    "type": "command",
+    "command": "printf '\\033[01;32m%s@%s\\033[00m:\\033[01;34m%s\\033[00m' \"$(whoami)\" \"$(hostname -s)\" \"$(pwd)\""
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-code-plugins": true
+  },
+  "alwaysThinkingEnabled": true,
+  "feedbackSurveyState": {
+    "lastShownTime": 1753953716044
   }
 }

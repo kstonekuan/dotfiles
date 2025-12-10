@@ -1,104 +1,34 @@
+- Always use descriptive function and variable names even if they are verbose
+- Always use rg over grep
+- Always use fd over find
 - Always prefer typescript over javascript
 - Always use biome for typescript
 - Always prefer pnpm over npm
-- Always use descriptive function and variable names even if they are verbose
-- Always build, typecheck and lint after finishing a task and fix all errors
-- Always use clippy for rust
 - Always prefer uv over pip
-- Always use ruff for python
-- Always prefer rg over grep
-- Always prefer fd over find
-- Use Svelte and Vite for building web frontends
+- Always typecheck, lint and format after finishing a task and fix all errors, use the static-analysis agent if available
+- Use "pnpm check" for typescript if available, if not "pnpm typecheck", "pnpm lint", and "pnpm format"
+- Always use "cargo clippy --all-targets --all-features" for rust linting
+- Always use "cargo fmt" for rust formatting
+- Always use "uv run ruff check --fix" for python linting
+- Always use "uv run ruff format" for python formatting
+- Always use "uv run ty check" for python typechecking, not mypy or pyright
 
-# Telegram Notifications
+# Common setup for package.json
 
-Use the mcp__telegram-notify__send_telegram_message and mcp__discord-notify__send_discord_message tools to send notifications to Telegram and Discord at the same time when they are available.
+```
+"lint": "biome check --write",
+"typecheck": "tsc --noEmit",
+"check": "pnpm run lint && pnpm run typecheck",
+```
 
-- Always send a Telegram notification when:
-  - A task is fully complete
+# Notifications
+
+Use the telegram-notifier agent to send messages when:
+  - A task is complete
   - You need user input to continue
   - An error occurs that requires user attention
   - The user explicitly asks for a notification (e.g., "notify me", "send me a message", "let me know")
 
-- Include relevant details in notifications:
-  - For builds/tests: success/failure status and counts
-  - For errors: the specific error message and file location
+# Large Codebase Analysis
 
-- Use concise, informative messages like:
-  - "✅ Build completed successfully (2m 34s)"
-  - "❌ Tests failed: 3/52 failing in auth.test.ts"
-  - "⚠️ Need permission to modify /etc/hosts"
-
-# Using Gemini CLI for Large Codebase Analysis
-
-When analyzing large codebases or multiple files that might exceed context limits, use the Gemini CLI with its massive
-context window. Use `gemini -p` to leverage Google Gemini's large context capacity.
-
-## File and Directory Inclusion Syntax
-
-Use the `@` syntax to include files and directories in your Gemini prompts. The paths should be relative to WHERE you run the gemini command:
-
-### Examples:
-
-**Single file analysis:**
-gemini -p "@src/main.py Explain this file's purpose and structure"
-
-Multiple files:
-gemini -p "@package.json @src/index.js Analyze the dependencies used in the code"
-
-Entire directory:
-gemini -p "@src/ Summarize the architecture of this codebase"
-
-Multiple directories:
-gemini -p "@src/ @tests/ Analyze test coverage for the source code"
-
-Current directory and subdirectories:
-gemini -p "@./ Give me an overview of this entire project"
-
-# Or use --all_files flag:
-gemini --all_files -p "Analyze the project structure and dependencies"
-
-Implementation Verification Examples
-
-Check if a feature is implemented:
-gemini -p "@src/ @lib/ Has dark mode been implemented in this codebase? Show me the relevant files and functions"
-
-Verify authentication implementation:
-gemini -p "@src/ @middleware/ Is JWT authentication implemented? List all auth-related endpoints and middleware"
-
-Check for specific patterns:
-gemini -p "@src/ Are there any React hooks that handle WebSocket connections? List them with file paths"
-
-Verify error handling:
-gemini -p "@src/ @api/ Is proper error handling implemented for all API endpoints? Show examples of try-catch blocks"
-
-Check for rate limiting:
-gemini -p "@backend/ @middleware/ Is rate limiting implemented for the API? Show the implementation details"
-
-Verify caching strategy:
-gemini -p "@src/ @lib/ @services/ Is Redis caching implemented? List all cache-related functions and their usage"
-
-Check for specific security measures:
-gemini -p "@src/ @api/ Are SQL injection protections implemented? Show how user inputs are sanitized"
-
-Verify test coverage for features:
-gemini -p "@src/payment/ @tests/ Is the payment processing module fully tested? List all test cases"
-
-When to Use Gemini CLI
-
-Use gemini -p when:
-- Analyzing entire codebases or large directories
-- Comparing multiple large files
-- Need to understand project-wide patterns or architecture
-- Current context window is insufficient for the task
-- Working with files totaling more than 100KB
-- Verifying if specific features, patterns, or security measures are implemented
-- Checking for the presence of certain coding patterns across the entire codebase
-
-Important Notes
-
-- Paths in @ syntax are relative to your current working directory when invoking gemini
-- The CLI will include file contents directly in the context
-- No need for --yolo flag for read-only analysis
-- Gemini's context window can handle entire codebases that would overflow Claude's context
-- When checking implementations, be specific about what you're looking for to get accurate results
+When analyzing large codebases or multiple files that might exceed context limits, use the gemini-codebase-analyzer agent with its massive context window to leverage Google Gemini's large context capacity.
