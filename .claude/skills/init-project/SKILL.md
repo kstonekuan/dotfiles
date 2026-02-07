@@ -1,4 +1,5 @@
 ---
+name: init-project
 description: Scaffold a new project with opinionated tooling configs for TypeScript, Rust, and/or Python
 argument-hint: "[languages: ts|rust|python...] [project-name]"
 ---
